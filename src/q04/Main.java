@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class q04 {
+public class Main {
 
     static boolean isPrime(int num) {
         if (num <= 1) return false;
