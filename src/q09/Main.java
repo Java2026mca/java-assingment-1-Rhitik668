@@ -1,24 +1,67 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
 
-        // TODO: Read two n×n matrices A and B, multiply them → print result C = A×B
-        //       Input: matrix A row by row, then matrix B row by row
-        //       Output: result matrix row by row, values separated by spaces
-        //
-        // Input:
-        // 2
-        // 1 2
-        // 3 4
-        // 5 6
-        // 7 8
-        //
-        // Output:
-        // 19 22
-        // 43 50
+        int r1, c1, r2, c2;
 
+        // Input first matrix size
+        System.out.print("Enter rows and columns of first matrix: ");
+        r1 = sc.nextInt();
+        c1 = sc.nextInt();
+
+        // Input second matrix size
+        System.out.print("Enter rows and columns of second matrix: ");
+        r2 = sc.nextInt();
+        c2 = sc.nextInt();
+
+        // Check multiplication condition
+        if (c1 != r2) {
+            System.out.println("Matrix multiplication not possible");
+            sc.close();
+            return;
+        }
+
+        int[][] A = new int[r1][c1];
+        int[][] B = new int[r2][c2];
+        int[][] C = new int[r1][c2];
+
+        // Input first matrix
+        System.out.println("Enter elements of first matrix:");
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                A[i][j] = sc.nextInt();
+            }
+        }
+
+        // Input second matrix
+        System.out.println("Enter elements of second matrix:");
+        for (int i = 0; i < r2; i++) {
+            for (int j = 0; j < c2; j++) {
+                B[i][j] = sc.nextInt();
+            }
+        }
+
+        // Matrix multiplication
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                C[i][j] = 0;
+                for (int k = 0; k < c1; k++) {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+
+        // Output result
+        System.out.println("Resultant Matrix:");
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                System.out.print(C[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        sc.close();
     }
 }
