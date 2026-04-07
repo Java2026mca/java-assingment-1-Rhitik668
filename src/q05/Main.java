@@ -1,21 +1,60 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class Main {
+public class ShapeArea {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String shape = sc.next();
 
-        // TODO: Compute area using the correct formula
-        //
-        //   circle    r         → area = π * r * r          (use Math.PI)
-        //   rectangle l w       → area = l * w
-        //   triangle  a b c     → Heron's formula: s=(a+b+c)/2, area=sqrt(s(s-a)(s-b)(s-c))
-        //
-        // Print: "Area: X.XX"  (exactly 2 decimal places)
-        //
-        // Input: circle 7      → Output: Area: 153.94
-        // Input: rectangle 4 6 → Output: Area: 24.00
-        // Input: triangle 3 4 5→ Output: Area: 6.00
+        int choice;
 
+        do {
+            // Menu
+            System.out.println("\n=== Shape Area Calculator ===");
+            System.out.println("1. Area of Circle");
+            System.out.println("2. Area of Rectangle");
+            System.out.println("3. Area of Triangle");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    // Circle
+                    System.out.print("Enter radius: ");
+                    double r = sc.nextDouble();
+                    double circleArea = Math.PI * r * r;
+                    System.out.println("Area of Circle = " + circleArea);
+                    break;
+
+                case 2:
+                    // Rectangle
+                    System.out.print("Enter length: ");
+                    double length = sc.nextDouble();
+                    System.out.print("Enter breadth: ");
+                    double breadth = sc.nextDouble();
+                    double rectangleArea = length * breadth;
+                    System.out.println("Area of Rectangle = " + rectangleArea);
+                    break;
+
+                case 3:
+                    // Triangle
+                    System.out.print("Enter base: ");
+                    double base = sc.nextDouble();
+                    System.out.print("Enter height: ");
+                    double height = sc.nextDouble();
+                    double triangleArea = 0.5 * base * height;
+                    System.out.println("Area of Triangle = " + triangleArea);
+                    break;
+
+                case 4:
+                    System.out.println("Exiting program...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+
+        } while (choice != 4);
+
+        sc.close();
     }
 }
