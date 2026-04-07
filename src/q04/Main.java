@@ -23,16 +23,19 @@ public class q04 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
 
-        if (isPrime(n) && isPerfect(n)) {
-            System.out.println("Both");
-        } else if (isPrime(n)) {
-            System.out.println("Prime");
-        } else if (isPerfect(n)) {
-            System.out.println("Perfect");
-        } else {
-            System.out.println("Neither");
+        int t = sc.nextInt();  // number of test cases
+
+        while (t-- > 0) {
+            int n = sc.nextInt();
+
+            if (isPerfect(n)) {
+                System.out.println("Perfect");
+            } else if (isPrime(n)) {
+                System.out.println("Prime");
+            } else {
+                System.out.println("Neither");
+            }
         }
 
         sc.close();
